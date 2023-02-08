@@ -46,12 +46,12 @@ public class PositionType {
             return false;
         }
 
-        return id == differentPositionType.id && Objects.equals(value, differentPositionType.value);
+        return id == differentPositionType.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, value);
+        return Objects.hash(id);
     }
 
 
