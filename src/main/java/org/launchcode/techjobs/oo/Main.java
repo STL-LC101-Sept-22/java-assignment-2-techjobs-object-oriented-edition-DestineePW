@@ -18,6 +18,9 @@ public class Main {
 //            System.out.println(job);
 //        }
 
+        //Job testJob = new Job("Kitchen Manager",new Employer("Chipotle Mexican Grill"),new Location("3767"),new PositionType("Food safety leader"),new CoreCompetency("Kitchen and food safety knowledge"));
+
+        //System.out.println(testJob.toString());
     }
 
 

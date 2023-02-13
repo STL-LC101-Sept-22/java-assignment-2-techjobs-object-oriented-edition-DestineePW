@@ -1,9 +1,11 @@
 package org.launchcode.techjobs.oo.test;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.launchcode.techjobs.oo.*;
+import org.w3c.dom.ls.LSOutput;
 
 import static org.junit.Assert.*;
 
@@ -53,4 +55,61 @@ public void testSettingJobId(){
 
     }
 
+    @Test
+    public void testToStringStartsAndEndsWithNewLine(){
+
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        char firstChar = testJob.toString().charAt(0);
+        char lastChar = testJob.toString().charAt(testJob.toString().length()-1);
+
+        assertEquals('\n', firstChar);
+        assertEquals('\n', lastChar);
+
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData(){
+
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        String jobString = "\n" + "ID: " + testJob.getId() + "\n" +
+                "Name: " + testJob.getName() + "\n" +
+                "Employer: " + testJob.getEmployer() + "\n" +
+                "Location: " + testJob.getLocation() + "\n" +
+                "Position Type: " + testJob.getPositionType() + "\n" +
+                "Core Competency: " + testJob.getCoreCompetency() + "\n";
+
+        assertEquals(jobString,testJob.toString());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField(){
+
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location(), new PositionType(), new CoreCompetency());
+
+        String expectedValue = "\n" + "ID: " + testJob.getId() + "\n" +
+                "Name: " + testJob.getName() + "\n" +
+                "Employer: " + testJob.getEmployer() + "\n" +
+                "Location: " + "Data not available" + "\n" +
+                "Position Type: " + "Data not available" + "\n" +
+                "Core Competency: " + "Data not available" + "\n";
+
+        assertEquals(expectedValue, testJob.toString());
+    }
+
+   @Test
+    public void testToStringHandlesIdOnly(){
+
+       Job testJob = new Job(null, new Employer(), new Location(), new PositionType(), new CoreCompetency());
+
+       String expectedValue = "OOPS! This job does not seem to exist.";
+
+       assertEquals(expectedValue,testJob.toString());
+
+    }
+
+    
+
+    
 }

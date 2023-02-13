@@ -4,9 +4,8 @@ import java.util.Objects;
 
 public class Job {
 
-    private int id;
     private static int nextId = 1;
-
+    private int id;
     private String name;
     private Employer employer;
     private Location location;
@@ -17,7 +16,7 @@ public class Job {
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
 
-    public Job(){
+    public Job() {
         this.id = nextId;
         nextId++;
     }
@@ -41,7 +40,7 @@ public class Job {
 
         if (toBeCompared == null) return false;
 
-        if(getClass() != toBeCompared.getClass()) return false;
+        if (getClass() != toBeCompared.getClass()) return false;
 
         Job job = (Job) toBeCompared;
 
@@ -54,7 +53,56 @@ public class Job {
     }
 
 
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
+    @Override
+    public String toString() {
+        StringBuilder toStringResult = new StringBuilder("\n" + "ID: " + getId() + "\n");
+
+        if (getName() != null) {
+            toStringResult.append("Name: " + getName() + "\n");
+        } else {
+            toStringResult.append("Name: " + "Data not available" + "\n");
+        }
+
+        if (getEmployer().toString() != null && getEmployer().toString() != "") {
+            toStringResult.append("Employer: " + getEmployer() + "\n");
+        } else {
+            toStringResult.append("Employer: " + "Data not available" + "\n");
+        }
+
+        if (getLocation().toString() != null && getLocation().toString() != "") {
+            toStringResult.append("Location: " + getLocation() + "\n");
+        } else {
+            toStringResult.append("Location: " + "Data not available" + "\n");
+        }
+
+        if (getPositionType().toString() != null && getPositionType().toString() != "") {
+            toStringResult.append("Position Type: " + getPositionType() + "\n");
+        } else {
+            toStringResult.append("Position Type: " + "Data not available" + "\n");
+        }
+
+        if (getCoreCompetency().toString() != null && getCoreCompetency().toString() != "") {
+            toStringResult.append("Core Competency: " + getCoreCompetency() + "\n");
+        } else {
+            toStringResult.append("Core Competency: " + "Data not available" + "\n");
+        }
+
+        if (
+                (getName() == null || getName() == "") &&
+                (getEmployer().toString() == null || getEmployer().toString() == "") &&
+                (getLocation().toString() == null || getLocation().toString() == "") &&
+                (getPositionType().toString() == null||getPositionType().toString() == "") &&
+                (getCoreCompetency().toString() == null || getCoreCompetency().toString() == "")
+        ) {
+            return "OOPS! This job does not seem to exist.";
+        } else {
+
+            return toStringResult.toString();
+        }
+    }
+
+
+// TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
 
