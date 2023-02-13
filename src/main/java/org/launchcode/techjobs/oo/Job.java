@@ -89,10 +89,10 @@ public class Job {
 
         if (
                 (getName() == null || getName() == "") &&
-                (getEmployer().toString() == null || getEmployer().toString() == "") &&
-                (getLocation().toString() == null || getLocation().toString() == "") &&
-                (getPositionType().toString() == null||getPositionType().toString() == "") &&
-                (getCoreCompetency().toString() == null || getCoreCompetency().toString() == "")
+                        (getEmployer().toString() == null || getEmployer().toString() == "") &&
+                        (getLocation().toString() == null || getLocation().toString() == "") &&
+                        (getPositionType().toString() == null || getPositionType().toString() == "") &&
+                        (getCoreCompetency().toString() == null || getCoreCompetency().toString() == "")
         ) {
             return "OOPS! This job does not seem to exist.";
         } else {
@@ -102,8 +102,7 @@ public class Job {
     }
 
 
-// TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
+// TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID and ID
 
 
     public int getId() {

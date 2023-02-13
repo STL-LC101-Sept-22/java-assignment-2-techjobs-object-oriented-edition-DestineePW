@@ -1,32 +1,50 @@
 package org.launchcode.techjobs.oo;
 
-public class JobField {
+import java.util.Objects;
 
+public abstract class JobField {
+
+    private static int nextId = 1;
     //Fields
     private int id;
-    private static int nextId = 1;
     private String value;
 
     //Constructors
-    public JobField(){
+    public JobField() {
         id = nextId;
         nextId++;
     }
 
-    public JobField(String value){
+    public JobField(String value) {
         this();
         this.value = value;
     }
 
     //Custom methods
     @Override
-    public String toString(){return value;}
+    public String toString() {
+        return value;
+    }
 
     @Override
-    public boolean equals(Object toBeCompared){
+    public boolean equals(Object toBeCompared) {
         if (this == toBeCompared) return true;
-        if(toBeCompared == null) return false;
+        if (toBeCompared == null) return false;
+        if (getClass() != toBeCompared.getClass()) return false;
 
+        JobField newJobField = (JobField) toBeCompared;
+
+        if (getId() != newJobField.getId()) {
+            return false;
+        }
+
+        return id == newJobField.id;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
 
